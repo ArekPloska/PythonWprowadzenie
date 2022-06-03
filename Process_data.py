@@ -10,7 +10,6 @@ class MyProject:
 
     def __readfile__(self, filepath) -> list:
         """Private function - returns content of a file"""
-
         content = []
         try:
             with open(filepath, 'r', encoding='Latin-1') as f:
@@ -25,7 +24,6 @@ class MyProject:
 
     def load_content(self, filepath: str, has_label: bool = True, sep: str = ','):
         """Loads content"""
-
         content = self.__readfile__(filepath)
         if len(content) > 0:
             try:
@@ -50,7 +48,6 @@ class MyProject:
 
     def dataset_split(self, training=0.7, validate=0.1):
         """Method that splits dataset into 3 subsets returns tuple (train, val, test)"""
-
         train_size = int(round(len(self.body) * training, 0))
         val_size = int(round(len(self.body) * validate, 0))
         dataset_train = self.body[:train_size]
@@ -98,4 +95,5 @@ if __name__ == '__main__':
     print(dataset.disp_data_decision_class(dataset, decision_class=3))
     dec3 = dataset.disp_data_decision_class(dataset, decision_class=3)
 
+    # save dataset to csv
     dataset.save_to_file(dataset, dec3, 'output/dec3.csv')
